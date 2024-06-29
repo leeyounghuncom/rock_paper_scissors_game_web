@@ -59,7 +59,10 @@ def main():
 
         msg = f"사용자 : {guest} 컴퓨터 : {bot} {r}"
 
-        q = GameHistory.query.all();
+        # q = GameHistory.query.all();
+        q = GameHistory.query.order_by(GameHistory.id.desc()).all(); #오른찻순 수정
+
+        #
         w = GameHistory.query.filter_by(result="이겼습니다").count()
         l = GameHistory.query.filter_by(result="졌습니다").count()
         d = GameHistory.query.filter_by(result="비겼습니다").count()
