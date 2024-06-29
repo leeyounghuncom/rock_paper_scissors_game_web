@@ -9,13 +9,24 @@
 <h1>가위 바위 보 게임 웹 버전</h1>
 
 <div>
-    <select name="">
+    <form action="" method="post">
+    <select name="guest">
         <option value="">가위 바위 보</option>
-        <option value="s">가위</option>
-        <option value="r">바위</option>
-        <option value="p">보</option>
+        <option value="가위">가위</option>
+        <option value="바위">바위</option>
+        <option value="보">보</option>
     </select>
     <input type="submit" value="제출">
+    </form>
+
+</div>
+
+<!-- 모니터 -->
+<hr>
+<div>
+    {{ data.g }}
+    <hr>
+    {{ data.b }}
 </div>
 
 <div>
