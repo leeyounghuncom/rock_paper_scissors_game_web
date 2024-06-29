@@ -18,23 +18,12 @@
     </select>
     <input type="submit" value="제출">
     </form>
-
 </div>
 
-<!-- 모니터 -->
-<hr>
-<div>
-    {{ data.g }}
-    <hr>
-    {{ data.b }}
-</div>
+<div>{{ data.msg }}</div>
 
 <div>
-    사용자 : 가위 컴퓨터 : 바위 졌습니다.
-</div>
-
-<div>
-    승 : 4 무 : 6 패 : 5
+    승 : {{ data.w }} 무 : {{ data.d }} 패 : {{ data.l }}
 </div>
 
 <div>
@@ -45,12 +34,18 @@
             <td>사용자</td>
             <td>결과</td>
         </tr>
-        <tr>
-            <td>#</td>
-            <td>컴퓨터</td>
-            <td>사용자</td>
-            <td>결과</td>
+
+
+    {% for element in data.gh %}
+            <tr>
+            <td>{{ element.id }}</td>
+            <td>{{ element.user_choice }}</td>
+            <td>{{ element.computer_choice }}</td>
+            <td>{{ element.result }}</td>
         </tr>
+    {% endfor %}
+
+
     </table>
 </div>
 

@@ -26,9 +26,15 @@ with app.app_context():
     db.create_all()
 
 
-@app.route("/", methods=["POST"])
+@app.route("/", methods=["GET","POST"])
 def main():
+
     rps = ["가위", "바위", "보"]
+    msg = None
+    gh = None
+    w=0
+    l=0
+    d=0
 
     if request.method == "POST":
         #POST 방식으로 저장 할 경우 form.get
@@ -51,10 +57,13 @@ def main():
         db.session.add(gh)
         db.session.commit()
 
-        msg = f'사용자 : {guest} 컴퓨터 : {bot} {r}'
+        msg = f"사용자 : {guest} 컴퓨터 : {bot} {r}"
 
+        q = GameHistory.query.all();
         w = GameHistory.query.filter_by(result="이겼습니다").count()
         l = GameHistory.query.filter_by(result="졌습니다").count()
         d = GameHistory.query.filter_by(result="비겼습니다").count()
 
-    return render_template("main.html", data={"msg" :msg,"gh":gh,"w":w,"l":l,"d":d})
+        # return redirect(url_for('main.index'))
+
+    return render_template("main.html", data={"msg":msg,"gh":q,"w":w,"l":l,"d":d})
