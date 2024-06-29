@@ -30,8 +30,8 @@ with app.app_context():
 def main():
 
     rps = ["가위", "바위", "보"]
-    msg = None
-    gh = None
+    msg = ''
+    q = []
     w=0
     l=0
     d=0
@@ -62,7 +62,6 @@ def main():
         # q = GameHistory.query.all();
         q = GameHistory.query.order_by(GameHistory.id.desc()).all(); #오른찻순 수정
 
-        #
         w = GameHistory.query.filter_by(result="이겼습니다").count()
         l = GameHistory.query.filter_by(result="졌습니다").count()
         d = GameHistory.query.filter_by(result="비겼습니다").count()
